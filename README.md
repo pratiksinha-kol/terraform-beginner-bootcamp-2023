@@ -2,7 +2,7 @@
 
 
 
-## Semantic Versioning 2.0.0
+## Semantic Versioning 2.0.0 :mage:
 
 #### _<ins>This Terraform Bootcamp will be utilizing Semantic Versioning for its tagging.<ins>_ 
 
