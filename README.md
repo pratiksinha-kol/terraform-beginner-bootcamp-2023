@@ -111,4 +111,54 @@ Check this [Wikipedia](https://en.wikipedia.org/wiki/Chmod) page for more.
 ## Gitpod Lifecycle Execution
 
 It is important to define `task` for ephemeral environment. Execution order for the **[Gitpod](https://www.gitpod.io/docs/configure/workspaces/tasks)** are `before`, `init` and `command`. The `init` command won't rerun if the existing workspace is restarted. 
- You can check [Gitpod.yml](.gitpod.yml) file and notice that we have used `before` whose execution order precedes `init` and `command`.   
+ You can check [Gitpod.yml](.gitpod.yml) file and notice that we have used `before` whose execution order precedes `init` and `command`.
+
+## Working with Env Vars
+
+#### Env Command 
+
+There are multiple ways to set environmental variables and see them easily. To see all out environmental variables, we use `env`. 
+
+To refine the search, or filter the output of the above outputs, you can use `env | GREP Your_Search_Term`. 
+
+#### Setting Environmental Variables
+
+- To set them locally, use: `ENV_VARS="1234567"`
+- To use them in context of bash script, you need to add the path to the script file `ENV_VARS="1234567" ./path/my_bash_script`
+- Using export: `export ENV_VARS="1234567"`
+
+To unset the env vars, use `unset ENV_VARS`
+
+
+#### Using environmental variables directly into bash script: 
+
+```
+#!/usr/bin/env bash
+
+PRINT='Hello World'
+
+echo $PRINT
+
+```
+
+#### Printing Env Vars
+
+To print the required enviromental variables, use `echo $ENV_VARS`
+
+
+#### Scoping of Env Vars
+
+Environmental Variables are used in a context. So, whenever you open a new VS Code terminal or any other code editor, it is unaware of the env vars. To persist them for the scope of the project, you need to set them appropriately. 
+
+To set them in your bash profile, use `.bash_profile`
+
+#### To set Env Vars for GitPod
+
+To store env vars for Gitpod, you can use Gitpod Secrets Storage. For that we set them by using `gp env ENV_VARS="1234567"`.
+
+By doing this, your Gitpod will be aware of this env vars, and can be used in any context. You can also store their env vars in Gitpod, but they are usually not secure or is _UNSAFE_. 
+
+> You need to restart your Gitpod environment, to effect the above changes 
+
+
+
