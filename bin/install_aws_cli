@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+cd /workspace
+
+rm -rf awscliv2.zip
+rm -rf '/workspace/aws'
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+#Color
+Magenta='\033[0;35m'
+NC='\033[0m'
+Green='\033[0;32m'
+
+#Verify
+echo -e "$Magenta<======= Verifying if AWS CLI is installed or not =======> " $NC
+aws --version
+
+#Getting AWS Caller Identity 
+echo -e "$Green<======= AWS Caller Identity =======> " $NC
+aws sts get-caller-identity
+
+cd $PROJECT_ROOT
