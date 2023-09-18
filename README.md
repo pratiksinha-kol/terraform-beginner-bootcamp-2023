@@ -179,6 +179,8 @@ export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 export AWS_DEFAULT_REGION=us-east-1
 ```
 
+Create a IAM User on your AWS Account and provide with them with permissions you deemed appropriate. After the user is created, generate Access Keys under ***Security Credentials*** tab. 
+
 If you have successfully set **[credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html#envvars-set)**, you will be returned with a json file. For example: 
 
 ```json
@@ -187,8 +189,4 @@ If you have successfully set **[credentials](https://docs.aws.amazon.com/cli/lat
     "Account": "999887999999",
     "Arn": "arn:aws:iam::999887999999:user/terraform-beginner-bootcamp-2023"
 }
-
-Create a IAM User on your AWS Account and provide with them with permissions you deemed appropriate. After the user is created, generate Access Keys under ***Security Credentials*** tab. 
-
 ```
-
