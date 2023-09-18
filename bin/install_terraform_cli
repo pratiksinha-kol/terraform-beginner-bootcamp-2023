@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-
+cd /workspace
 
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 
@@ -29,3 +29,6 @@ NC='\033[0m'
 #Verify
 echo -e "$Blue<======= Verifying if Terraform is installed or not =======> " $NC
 terraform --version
+
+
+cd $PROJECT_ROOT
