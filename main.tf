@@ -4,22 +4,39 @@ terraform {
       source  = "hashicorp/random"
       version = "3.5.1"
     }
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.17.0"
+    }
   }
+}
+
+provider "aws" {
+  # Configuration options
 }
 
 provider "random" {
   # Configuration options
 }
 
+#https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
 resource "random_string" "bucket_name" {
-  length  = 20
+  upper = false
+  lower = true
+  length  = 25
   special = false
 }
 
-output "random_bucket_name" {
-  value = upper(random_string.bucket_name.result)
+
+
+#https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+resource "aws_s3_bucket" "example" {
+  # S3 Bucket naming rules 
+  #https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html
+  bucket = random_string.bucket_name.result
+
 }
 
-output "random_bucket_id" {
-  value = random_string.bucket_name.id
+output "random_bucket_name" {
+  value = random_string.bucket_name.result
 }
