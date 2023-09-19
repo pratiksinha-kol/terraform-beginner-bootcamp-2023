@@ -257,3 +257,8 @@ When you want to ready with your resources and want to delete it, run
 ```
 terraform apply -auto-approve -destroy OR terraform destroy
 ``` 
+
+#### Terraform Format
+
+There is an easy way using which you can format your Terraform file. To format your file, run `terraform fmt`. 
+
