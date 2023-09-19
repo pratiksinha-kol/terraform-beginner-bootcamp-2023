@@ -190,3 +190,70 @@ If you have successfully set **[credentials](https://docs.aws.amazon.com/cli/lat
     "Arn": "arn:aws:iam::999887999999:user/terraform-beginner-bootcamp-2023"
 }
 ```
+
+## Terraform Basics
+
+### Terraform Registry
+
+To truly understand the power of Terraform, you first need to know about Terraform Registry and Terraform Modules. It is located at this link **[https://registry.terraform.io](https://registry.terraform.io/)** 
+
+- Terraform Registry powers all of Terraform’s resource types. It gives an interface for the users to create resources on different providers such as AWS, GCP, Azure, Oracle Cloud, Kubernetes, and many more. 
+
+- Terraform Modules are self-contained packages of Terraform configurations that are managed as a group. It gives you moduler and a faster way of creating resources without you being burdened with large amount of Terraform code. 
+
+
+In this case, we are going to use a ***[Random](https://registry.terraform.io/providers/hashicorp/random/latest)*** Terraform Provider for the creation of S3 bucket. 
+
+#### Terraform Preperation
+
+We have already installed Terraform, and to verify it by running either of these command 
+```
+terraform --version OR terraform -help
+```
+
+If you are unsure of Terraform CLI, you can simply enter `terraform` and you will be presented with a list of commands for you to work with. 
+
+#### Terraform Init
+
+The first step to perform is to run the `init` command. It is important to point out that this command must be executed where there is a `.tf` or `main.tf` file. You can think it as an initialization process. 
+
+
+`terraform init`
+
+After executing the above command, terraform will download all the required binaries and libararies required for this project. You can see it under the current working directory under `.terraform`. This is also called as **Terraform Directory** 
+
+A lock file `.terraform.lock.hcl` is also generated which we will dicuss later on. 
+
+
+**FYI: DISABLE FIREWALL BEFORE EXECUTING THIS COMMAND**
+
+#### Terraform Plan
+
+If you have worked with AWS Cloudformation before, you must be familiar with Changeset. This command does exactly that. `terraform plan` show the changes  given configuration in the `.tf` along with current state of your infrastructure. 
+
+#### Terraform Apply
+
+If you are satisfied with the changes as seen in the output of `terraform plan` and wanted it to apply it, you need to run `terraform apply`. It will prompt you with an approval that you must provide for it to be successfully executed. to bypass this, you can use `terraform apply -auto-approve`
+
+The said command not only creates resources but also update the infrastructure if required. 
+
+#### Terraform Lock File
+
+The lock file by the name of ***.terraform.lock.hcl*** is generated after performing `terraform init`. This file is stored in the current working directory. This contained a locked version from the Provider as specified in the `.tf` file. 
+
+You must commit the Lock File in your code reporsitory (Github, Bitbucket etc) so that Terraform can use the same selection in future when the `terraform init` is executed again. 
+
+#### Terraform State Files
+
+Two additional files are created when you run `terraform apply` and they are `terraform.tfstate` and `terraform.tfstate.backup`. `terraform.tfstate` file stores your infrastructures current state and it contains many sensitive data. 
+
+Hence, it is **STRONGLY** recommended to never store this file in your respository.  
+
+The `terraform.tfstate.backup` contains data of your previous state file state. 
+
+#### Terraform Destroy 
+
+When you want to ready with your resources and want to delete it, run 
+```
+terraform apply -auto-approve -destroy OR terraform destroy
+``` 
