@@ -309,8 +309,33 @@ Use the following format to enter your token:
 }
 ```
 
-### Automate the creation of API Token file (SEE ABOVE)
+### Automate the creation of TFRC Credentials (SEE ABOVE)
 
 We first need to [create](#Configuration-Terraform-Token-for-Gitpod-workspace) a new API token before hand. Now to automate the process of creating
 `/home/gitpod/.terraform.d/credentials.tfrc.json`, we will create a new [bash script](./bin/generate_tfrc_credentials) and make it executable. We have also edited our [Gitpod](.gitpod.yml) file so that it is generated for very new environment.
 
+
+### Using `tf` alias for `terraform`
+
+If you don't want to write `terraform` everytime in your Terraform environment, then you can use an alias. The first thing you need to do is to edit the `.bash_profile`. You can run either of these commands: 
+
+```
+open ~/.bash_profile
+
+OR
+
+nano ~/.bash_profile
+```
+
+In the `.bash_profile`, add an additional line to setup an alias
+
+```sh
+alias tf="terraform"
+
+```
+The simplified version of setting up the [alias](https://linuxize.com/post/how-to-create-bash-aliases/) is given below: 
+
+```
+alias alias_name="command_to_run"
+```
+To simply this process, we have created a bash **[script](./bin/set_tf_alias)** which will execute for every new Gitpod environment. 
