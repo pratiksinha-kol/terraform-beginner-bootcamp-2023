@@ -262,3 +262,49 @@ terraform apply -auto-approve -destroy OR terraform destroy
 
 There is an easy way using which you can format your Terraform file. To format your file, run `terraform fmt`. 
 
+### Terraform Cloud
+
+We have already seen how Terraform creates a state file. They are usually saved here locally, but to protect it and store in Cloud, you can opt for [Terraform Cloud](https://app.terraform.io). Create a account and then create a new workspace. Select the workspace and then create a new Project. 
+
+After the creation, you will get a new set of code for your `.tf` file
+
+```json
+terraform {
+  cloud {
+    organization = "your-org-name"
+
+    workspaces {
+      name = "project_name"
+    }
+  }
+}
+```
+
+You need to copy it and set it on your `.tf` file then run `terraform init` as you have changed the infrastructure. 
+
+### Configuration Terraform Token for Gitpod workspace 
+
+You will be prompted with an error ***Required token could not be found*** and you need to generate token. To rectify this error, run `terraform login` and click on `P`. Terraform Login will ask for a Token value to enter. 
+
+To generate the token, go to your Terraform Cloud and under _User Settings_, click on _Tokens_ and _Create and API Token_. Another way is by clicking on the link provided after you login using `terraform login` and clicking on `P`. 
+
+Copy the token and enter it on your terminal. The entered token won't be visible, so don't try to enter it twice, just because you cannot see them.
+
+There is a manual way to set your Terraform API token. Create a file and edit it.
+
+```
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Use the following format to enter your token: 
+
+```
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+    }
+  }
+}
+```
