@@ -308,3 +308,9 @@ Use the following format to enter your token:
   }
 }
 ```
+
+### Automate the creation of API Token file (SEE ABOVE)
+
+We first need to [create](#Configuration-Terraform-Token-for-Gitpod-workspace) a new API token before hand. Now to automate the process of creating
+`/home/gitpod/.terraform.d/credentials.tfrc.json`, we will create a new [bash script](./bin/generate_tfrc_credentials) and make it executable. We have also edited our [Gitpod](.gitpod.yml) file so that it is generated for very new environment.
+
