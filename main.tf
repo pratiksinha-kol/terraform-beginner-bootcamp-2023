@@ -1,4 +1,13 @@
 terraform {
+
+  cloud {
+    organization = "pratiksinha-org"
+
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
+
   required_providers {
     random = {
       source  = "hashicorp/random"
@@ -21,8 +30,8 @@ provider "random" {
 
 #https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
 resource "random_string" "bucket_name" {
-  upper = false
-  lower = true
+  upper   = false
+  lower   = true
   length  = 25
   special = false
 }
