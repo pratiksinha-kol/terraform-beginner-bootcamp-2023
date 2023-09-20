@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+Yellow='\033[0;33m'
+Cyan='\033[0;36m'
+NC='\033[0m'
+
+# Check if the alias already exists in the .bash_profile
+grep -q 'alias tf="terraform"' ~/.bash_profile
+
+# $? is a special variable in bash that holds the exit status of the last command executed
+if [ $? -ne 0 ]; then
+    # If the alias does not exist, append it
+    echo 'alias tf="terraform"' >> ~/.bash_profile
+    echo -e "$Yellow <====   Alias added successfully.   ====>" $NC
+else
+    # Inform the user if the alias already exists
+    echo -e "$Cyan <====   Alias already exists in .bash_profile.   ====>" $NC
+fi
+
+# Optional: source the .bash_profile to make the alias available immediately
+source ~/.bash_profile
