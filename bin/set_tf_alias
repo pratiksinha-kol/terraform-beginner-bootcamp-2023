@@ -11,10 +11,10 @@ grep -q 'alias tf="terraform"' ~/.bash_profile
 if [ $? -ne 0 ]; then
     # If the alias does not exist, append it
     echo 'alias tf="terraform"' >> ~/.bash_profile
-    echo -e "$Yellow <====   Alias added successfully.   ====>" $NC
+    echo -e "$Yellow <====   TF (Terraform) Alias added successfully.   ====>" $NC
 else
     # Inform the user if the alias already exists
-    echo -e "$Cyan <====   Alias already exists in .bash_profile.   ====>" $NC
+    echo -e "$Cyan <====   TF (Terraform) Alias already exists in .bash_profile.   ====>" $NC
 fi
 
 # Optional: source the .bash_profile to make the alias available immediately
