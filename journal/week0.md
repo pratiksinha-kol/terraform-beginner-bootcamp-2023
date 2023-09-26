@@ -31,7 +31,7 @@
   * [Terraform Cloud](#terraform-cloud)
       * [Configuration Terraform Token for Gitpod workspace](#configuration-terraform-token-for-gitpod-workspace)
       * [Automate the creation of TFRC Credentials](#automate-the-creation-of-tfrc-credentials)
-  - [Using `tf` alias for `terraform`](#using-tf-alias-for-terraform)
+  * [Using `tf` alias for `terraform`](#using-tf-alias-for-terraform)
 
 
 ## Semantic Versioning 2.0.0 :mage:
