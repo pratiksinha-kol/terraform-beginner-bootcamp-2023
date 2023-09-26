@@ -6,7 +6,7 @@
 - [Installing Terraform CLI](#installing-terraform-cli)
   * [Refactored Bash Scripts](#refactored-bash-scripts)
   * [Verifying Linux Distribution](#verifying-linux-distribution)
-    + [Shebang Considerations</ul>](#shebang-considerations)
+    + [Shebang Considerations](#shebang-considerations)
   * [Bash Script Execution Permission](#bash-script-execution-permission)
 - [Gitpod Lifecycle Execution](#gitpod-lifecycle-execution)
 - [Working with Env Vars](#working-with-env-vars)
