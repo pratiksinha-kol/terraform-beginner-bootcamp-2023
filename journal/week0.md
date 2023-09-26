@@ -64,7 +64,7 @@ Terraform is distributed as a binary package. In this bootcamp, we are going to 
 
 ### Refactored Bash Scripts
 
-We have specifically created a bash script to automate the process to _[install](./bin/install_terraform_cli.sh)_ Terraform CLI. Earlier Gitpod instruction has gpg keyring issue which we rectified in this bash script. 
+We have specifically created a bash script to automate the process to _[install](../bin/install_terraform_cli)_ Terraform CLI. Earlier Gitpod instruction has gpg keyring issue which we rectified in this bash script. 
 
 1. Now you can manually run Terraform CLI install 
 2. Gitpod yaml file is lot clearer and concise
@@ -144,7 +144,7 @@ Check this [Wikipedia](https://en.wikipedia.org/wiki/Chmod) page for more.
 ## Gitpod Lifecycle Execution
 
 It is important to define `task` for ephemeral environment. Execution order for the **[Gitpod](https://www.gitpod.io/docs/configure/workspaces/tasks)** are `before`, `init` and `command`. The `init` command won't rerun if the existing workspace is restarted. 
- You can check [Gitpod.yml](.gitpod.yml) file and notice that we have used `before` whose execution order precedes `init` and `command`.
+ You can check [Gitpod.yml](../.gitpod.yml) file and notice that we have used `before` whose execution order precedes `init` and `command`.
 
 ## Working with Env Vars
 
@@ -195,7 +195,7 @@ By doing this, your Gitpod will be aware of this env vars, and can be used in an
 
 ## Installing AWS CLI
 
-We have created a bash script using which you can easily install AWS CLI. You just need to execute [`./bin/install_aws_cli`](./bin/install_aws_cli)
+We have created a bash script using which you can easily install AWS CLI. You just need to execute [`./bin/install_aws_cli`](../bin/install_aws_cli)
 
 Check out the **[Website](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for more**
 
@@ -345,7 +345,7 @@ Use the following format to enter your token:
 ### Automate the creation of TFRC Credentials
 
 We first need to [create](#Configuration-Terraform-Token-for-Gitpod-workspace) a new API token before hand. Now to automate the process of creating
-`/home/gitpod/.terraform.d/credentials.tfrc.json`, we will create a new [bash script](./bin/generate_tfrc_credentials) and make it executable. We have also edited our [Gitpod](.gitpod.yml) file so that it is generated for very new environment.
+`/home/gitpod/.terraform.d/credentials.tfrc.json`, we will create a new [bash script](../bin/generate_tfrc_credentials) and make it executable. We have also edited our [Gitpod](../.gitpod.yml) file so that it is generated for very new environment.
 
 
 ### Using tf alias for terraform
@@ -371,5 +371,5 @@ The simplified version of setting up the [alias](https://linuxize.com/post/how-t
 ```
 alias alias_name="command_to_run"
 ```
-To simply this process, we have created a bash **[script](./bin/set_tf_alias)** which will execute for every new Gitpod environment. 
+To simply this process, we have created a bash **[script](../bin/set_tf_alias)** which will execute for every new Gitpod environment. 
 
