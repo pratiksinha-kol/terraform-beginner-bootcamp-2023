@@ -2,7 +2,7 @@
 
 - [Semantic Versioning 2.0.0 :mage:](#semantic-versioning-200--mage-)
     + [_<ins>This Terraform Bootcamp will be utilizing Semantic Versioning for its tagging.<ins>_](#--ins-this-terraform-bootcamp-will-be-utilizing-semantic-versioning-for-its-tagging-ins--)
-  [* To know more about _Semantic Versioning_, please visit [**Official Website**](https://semver.org/) of Semver.](#to-know-more-about-semantic-versioning-please-visit-official-website-of-semver)
+- [To know more about _Semantic Versioning_, please visit **Official Website** of Semver.](#to-know-more-about-semantic-versioning-please-visit-official-website-of-semver)
 - [Installing Terraform CLI](#installing-terraform-cli)
   * [Refactored Bash Scripts](#refactored-bash-scripts)
   * [Verifying Linux Distribution](#verifying-linux-distribution)
