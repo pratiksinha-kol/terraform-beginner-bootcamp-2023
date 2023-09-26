@@ -1,8 +1,7 @@
 # Terraform Beginner Bootcamp 2023 - Week 0
 
-- [Semantic Versioning 2.0.0 :mage:](#semantic-versioning-200--mage-)
-    + [_<ins>This Terraform Bootcamp will be utilizing Semantic Versioning for its tagging.<ins>_](#--ins-this-terraform-bootcamp-will-be-utilizing-semantic-versioning-for-its-tagging-ins--)
-- [To know more about _Semantic Versioning_, please visit **Official Website** of Semver.](#to-know-more-about-semantic-versioning-please-visit-official-website-of-semver)
+- [Semantic Versioning 2.0.0 :mage:](#semantic-versioning-200-mage)
+
 - [Installing Terraform CLI](#installing-terraform-cli)
   * [Refactored Bash Scripts](#refactored-bash-scripts)
   * [Verifying Linux Distribution](#verifying-linux-distribution)
@@ -30,9 +29,9 @@
     + [Terraform Destroy](#terraform-destroy)
     + [Terraform Format](#terraform-format)
   * [Terraform Cloud](#terraform-cloud)
-  * [Configuration Terraform Token for Gitpod workspace](#configuration-terraform-token-for-gitpod-workspace)
-  * [Automate the creation of TFRC Credentials](#automate-the-creation-of-tfrc-credentials)
-  * [Using `tf` alias for `terraform`](#using-tf-alias-for-terraform)
+      * [Configuration Terraform Token for Gitpod workspace](#configuration-terraform-token-for-gitpod-workspace)
+      * [Automate the creation of TFRC Credentials](#automate-the-creation-of-tfrc-credentials)
+  - [Using `tf` alias for `terraform`](#using-tf-alias-for-terraform)
 
 
 ## Semantic Versioning 2.0.0 :mage:
