@@ -1,4 +1,4 @@
-# Terraform Beginner Bootcamp 2023 - Week0
+# Terraform Beginner Bootcamp 2023 - Week 0
 
 - [Semantic Versioning 2.0.0 :mage:](#semantic-versioning-200--mage-)
     + [_<ins>This Terraform Bootcamp will be utilizing Semantic Versioning for its tagging.<ins>_](#--ins-this-terraform-bootcamp-will-be-utilizing-semantic-versioning-for-its-tagging-ins--)
