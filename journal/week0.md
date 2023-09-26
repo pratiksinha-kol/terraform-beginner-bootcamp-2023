@@ -2,17 +2,17 @@
 
 - [Semantic Versioning 2.0.0 :mage:](#semantic-versioning-200--mage-)
     + [_<ins>This Terraform Bootcamp will be utilizing Semantic Versioning for its tagging.<ins>_](#--ins-this-terraform-bootcamp-will-be-utilizing-semantic-versioning-for-its-tagging-ins--)
-  * [To know more about _Semantic Versioning_, please visit [**Official Website**](https://semver.org/) of Semver.](#to-know-more-about--semantic-versioning---please-visit----official-website----https---semverorg---of-semver)
+  * To know more about _Semantic Versioning_, please visit [**Official Website**](https://semver.org/) of Semver.
 - [Installing Terraform CLI](#installing-terraform-cli)
   * [Refactored Bash Scripts](#refactored-bash-scripts)
   * [Verifying Linux Distribution](#verifying-linux-distribution)
-    + [Shebang Considerations</ul>](#shebang-considerations--ul-)
+    + [Shebang Considerations</ul>](#shebang-considerations)
   * [Bash Script Execution Permission](#bash-script-execution-permission)
 - [Gitpod Lifecycle Execution](#gitpod-lifecycle-execution)
 - [Working with Env Vars](#working-with-env-vars)
     + [Env Command](#env-command)
     + [Setting Environmental Variables](#setting-environmental-variables)
-    + [Using environmental variables directly into bash script:](#using-environmental-variables-directly-into-bash-script-)
+    + [Using environmental variables directly into bash script:](#using-environmental-variables-directly-into-bash-script)
     + [Printing Env Vars](#printing-env-vars)
     + [Scoping of Env Vars](#scoping-of-env-vars)
     + [To set Env Vars for GitPod](#to-set-env-vars-for-gitpod)
@@ -31,8 +31,8 @@
     + [Terraform Format](#terraform-format)
   * [Terraform Cloud](#terraform-cloud)
   * [Configuration Terraform Token for Gitpod workspace](#configuration-terraform-token-for-gitpod-workspace)
-  * [Automate the creation of TFRC Credentials (SEE ABOVE)](#automate-the-creation-of-tfrc-credentials--see-above-)
-  * [Using `tf` alias for `terraform`](#using--tf--alias-for--terraform-)
+  * [Automate the creation of TFRC Credentials](#automate-the-creation-of-tfrc-credentials)
+  * [Using `tf` alias for `terraform`](#using-tf-alias-for-terraform)
 
 
 ## Semantic Versioning 2.0.0 :mage:
@@ -96,7 +96,7 @@ UBUNTU_CODENAME=jammy
 
 To know more about Linux distribution, you can visit the **[Website](https://opensource.com/article/18/6/linux-version)** for more info. 
 
-#### Shebang Considerations</ul>
+#### Shebang Considerations
 
 **[Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))** has a special meaning and it starts with # (Pound key) and ! (Exclamation mark). This is used to specify which interpreter will be used will run given the script. 
 
@@ -163,7 +163,7 @@ To refine the search, or filter the output of the above outputs, you can use `en
 To unset the env vars, use `unset ENV_VARS`
 
 
-#### Using environmental variables directly into bash script: 
+#### Using environmental variables directly into bash script
 
 ```
 #!/usr/bin/env bash
@@ -342,13 +342,13 @@ Use the following format to enter your token:
 }
 ```
 
-### Automate the creation of TFRC Credentials (SEE ABOVE)
+### Automate the creation of TFRC Credentials
 
 We first need to [create](#Configuration-Terraform-Token-for-Gitpod-workspace) a new API token before hand. Now to automate the process of creating
 `/home/gitpod/.terraform.d/credentials.tfrc.json`, we will create a new [bash script](./bin/generate_tfrc_credentials) and make it executable. We have also edited our [Gitpod](.gitpod.yml) file so that it is generated for very new environment.
 
 
-### Using `tf` alias for `terraform`
+### Using tf alias for terraform
 
 If you don't want to write `terraform` everytime in your Terraform environment, then you can use an alias. The first thing you need to do is to edit the `.bash_profile`. You can run either of these commands: 
 
