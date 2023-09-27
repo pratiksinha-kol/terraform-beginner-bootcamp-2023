@@ -72,3 +72,36 @@ There are two ways to define **[variables](https://developer.hashicorp.com/terra
 ***These variables can be sensitive or non-sensitive***
 
 
+## Dealing With Configuration Drift
+
+### What to do when you loose your Terraform State file 
+
+There would be some instances where you will loose your terraform Sate file. One way is by deleteing all your resources manually. Another way is to import the resources. However, it must be noted that it doesn't work for all resouces. Check the Terraform Registry for more information.   
+
+### Fix Missing Resources with Terraform Import
+
+To import existing resources, you can use `import`. There is another way to import resources which is by defining **[block](https://developer.hashicorp.com/terraform/language/import)**.
+
+```
+import {
+  to = aws_instance.example
+  id = "i-abcd1234"
+}
+
+resource "aws_instance" "example" {
+  name = "hashi"
+  # (other resource arguments...)
+}
+
+```
+We are going to use **[CLI](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)** for importing resources. Here we are importing an exsting S3 bucket:  
+
+```
+terraform import aws_s3_bucket.bucket bucket-name
+```
+
+### Fix manual configuration
+
+Someone in your organization might inadvertently delete or modifies any resource, we must be able to detect the changes. 
+
+The easiest way to detect the change is by running `terraform plan`. It will list all the changes. You can apply those changes and revert back your Terraform state to the previous state by using **[Configuration Drift](https://www.hashicorp.com/blog/detecting-and-managing-drift-with-terraform)**.
