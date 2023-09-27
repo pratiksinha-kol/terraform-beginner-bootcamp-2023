@@ -105,3 +105,51 @@ terraform import aws_s3_bucket.bucket bucket-name
 Someone in your organization might inadvertently delete or modifies any resource, we must be able to detect the changes. 
 
 The easiest way to detect the change is by running `terraform plan`. It will list all the changes. You can apply those changes and revert back your Terraform state to the previous state by using **[Configuration Drift](https://www.hashicorp.com/blog/detecting-and-managing-drift-with-terraform)**.
+
+## Terraform Modules
+
+### Terraform Module Structure
+
+Whenever you plan to use modules for terraform, it is recommended to use a `modules` directory but it an be given any name especially when developing on local environment. 
+
+### Module Sources
+
+Terraform provides loads of options to import modules. They can be imported from:
+  * Github
+  * Bitbucket
+  * S3 Bucket
+  * Terraform Registry
+  * Local Paths (We are using this method)
+  * and many ***[more](https://developer.hashicorp.com/terraform/language/modules/sources)***....
+
+
+### Passing Input Variables
+
+As we had discussed earlier, it is recommended to use a dedicated `variables.tf`. Hence, before importing them in our module, we must define and declare these variables in the `variables.tf` file. 
+
+Now, to use these variables in our module, we can use similar to the example given below: 
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+
+> To know more about Modules, visit the ***[Official Website](https://developer.hashicorp.com/terraform/language/modules/sources)***
+
+## Fix Output using Terraform Refresh
+
+To modify the Terraform state, you can use `terraform refresh`. It is important to point out that it doesn't modify real remote objects, but will only modify Terraform state. You don't need to use this command as `terraform plan` and `terraform apply` both performs the same action. This is also the reason why this [command](https://developer.hashicorp.com/terraform/cli/commands/refresh) is deprected. 
+
+In the given command, we just need to refrsh our output without changing any real objects. 
+
+```tf
+terraform apply -refresh --auto-approve
+
+OR
+
+terraform apply -refresh-only -auto-approve
+
+```
