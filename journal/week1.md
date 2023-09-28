@@ -153,3 +153,48 @@ OR
 terraform apply -refresh-only -auto-approve
 
 ```
+
+## Working with files in Terraform
+
+
+### Path Variable
+
+
+#### **[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)**
+
+In Terraform, there is a special variable called `path` that allows us to reference local paths:
+ - path.module: Get the path for the current module
+ - path.root: Get the path for the root module
+
+Here is a sample of uploading [object](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object) to S3 bucket: 
+
+```
+resource "aws_s3_object" "error.html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "error.html"
+  source = "${path.root}/public/error.html"
+}
+```
+
+
+### Checking existence of file while Configuring variables
+
+Whenever there is a need to check the existence of the file, you can use [Terraform function](https://developer.hashicorp.com/terraform/language/functions/fileexists) to do that. Under the resource `variable`, you can choose to perform validation `condition     = fileexists(var.index_html_filepath)`.  
+
+Here is an example where we ***validate*** the existence of the file:
+
+```
+variable "error_html_filepath" {
+  description = "The file path for error.html"
+  type        = string
+
+  validation {
+    condition     = fileexists(var.error_html_filepath)
+    error_message = "The provided path for error.html does not exist."
+  }
+}
+```
+
+### filemd5 Function
+
+It hashes the contents of a given file rather than a literal string. Find out [more](https://developer.hashicorp.com/terraform/language/functions/filemd5).
