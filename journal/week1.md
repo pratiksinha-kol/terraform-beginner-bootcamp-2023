@@ -233,3 +233,43 @@ variable "error_html_filepath" {
 ### filemd5 Function
 
 It hashes the contents of a given file rather than a literal string. Find out [more](https://developer.hashicorp.com/terraform/language/functions/filemd5).
+
+## Terraform Locals
+
+Terraform Locals are named values which can be assigned and used in your code. It mainly serves the purpose of reducing duplication within the Terraform code. When you use Locals in the code, since you are reducing duplication of the same value, you also increase the readability of the code.
+
+```
+locals {
+  s3_origin_id = "myS3Origin"
+}
+```
+
+***[Terraform Locals](https://developer.hashicorp.com/terraform/language/values/locals)***
+
+## Terraform Data Sources
+
+Data sources allow Terraform to use information defined outside of Terraform, defined by another separate Terraform configuration. For example, your AWS Account ID, list of IPs exposed by your cloud provider etc...
+
+```
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+```
+
+***[Terraform Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)***
+
+## Using JSON Format
+
+jsonencode encodes a given value to a string using JSON syntax. 
+
+```
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+
+It is helpful in creation of the json policy. 
+
+***[jsonencode Function](https://developer.hashicorp.com/terraform/language/functions/jsonencode)***
+
