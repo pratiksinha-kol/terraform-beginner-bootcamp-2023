@@ -18,7 +18,7 @@ locals {
 
 #Use locals
 locals {
-  endpoint_name = "CloudFront Production"
+  name = "CloudFront Production"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -70,10 +70,24 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   tags = {
     UserUuid = var.user_uuid
-    endpoint_name = local.endpoint_name
+    endpoint_name = local.name
   }
 
   viewer_certificate {
     cloudfront_default_certificate = true
   }
 }
+
+resource "terraform_data" "invalidate_cache" {
+  triggers_replace = terraform_data.content_version.output
+
+  provisioner "local-exec" {
+    # https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings
+    command = <<COMMAND
+aws cloudfront create-invalidation \
+--distribution-id ${aws_cloudfront_distribution.s3_distribution.id} \
+--paths '/*'
+    COMMAND
+
+  }
+}  

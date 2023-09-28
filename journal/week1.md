@@ -309,3 +309,56 @@ lifecycle {
 ```
 
 **[Terraform Data](https://developer.hashicorp.com/terraform/language/resources/terraform-data)**
+
+## Terraform Provisioners
+
+Terraform Provisioners are used for executing scripts or shell commands on a local or remote machine as part of resource creation/deletion. It is similar to `user-data` we use to configure our EC2 instance in our AWS service. **[Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)** can be run on local and remote environment. 
+
+It is not recommened to use Provisioners as Configuration Management Tool such as Ansible, Chef, Salt, Pupper and others does a better job at handling these taks.  
+
+### local-exec Provisioner
+
+The `local-exec` provisioner works locally and specifically where the Terraform is running locally and not on the resource. 
+
+> Use provisioners as a [last resort](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax). There are better alternatives for most situations.
+
+```
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+**[local-exec provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec)**
+
+### remote-exec Provisioner
+
+The `remote-exec` provisioner invokes a script on a remote resource after it is created. This can be used to run a configuration management tool, bootstrap into a cluster, etc. The `remote-exec` provisioner requires a connection and supports both `ssh` and `winrm`.
+
+> Use provisioners as a [last resort](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax). There are better alternatives for most situations.
+
+```
+resource "aws_instance" "web" {
+  # ...
+
+  # Establishes connection to be used by all
+  # generic remote provisioners (i.e. file/remote-exec)
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+```
+
+**[remote-exec Provisioner](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)**
