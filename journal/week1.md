@@ -1,5 +1,40 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
 
+## Fixing Git Tags
+
+If you have inadvertantly tagged a git branch and want to correct it, then you must have to change it locally and then remotely. 
+
+To delete a specific `tag locally` ====> 
+
+```
+git tag -d 0.4.0
+
+or 
+
+git tag -d <tag_name>
+```
+
+To delete `tag remotely` ====>
+
+```
+git push --delete origin 0.4.0
+
+OR
+
+git push --delete origin <tag_name>
+```
+
+Now go to your commit history and grab the `SHA` of that commit that you want to `retag`. 
+
+```
+git checkout <SHA>
+git tag Major.Minor.Patch
+git push --tags
+git checkout main
+```
+
+Read [here](https://devconnected.com/how-to-delete-local-and-remote-tags-on-git/) to know more about it. 
+
 ## Root Modules Structure
 
 The root module structure is as follows: 
