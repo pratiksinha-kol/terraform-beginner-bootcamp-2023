@@ -273,3 +273,39 @@ It is helpful in creation of the json policy.
 
 ***[jsonencode Function](https://developer.hashicorp.com/terraform/language/functions/jsonencode)***
 
+## Changing the Lifecycle of Resources
+
+Using Terraform, you can describe the general lifecycle of the resources. Customization of it is done in the `resource` block using `lifecycle` block. 
+
+```
+resource "azurerm_resource_group" "example" {
+  # ...
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
+
+**[Meta-Argument lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)**
+
+
+## Terraform Data
+
+The replace_triggered_by lifecycle argument requires all of the given addresses to be for resources, because the decision to force replacement is based on the planned actions for all of the mentioned resources.
+
+Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in `replace_triggered_by`. You can use terraform_data's behavior of planning an action each time `input` changes to indirectly use a plain value to trigger replacement.
+
+```
+resource "terraform_data" "content_version" {
+  input = var.content_version
+}
+```
+
+```
+lifecycle {
+    replace_triggered_by = [ terraform_data.content_version.output ]
+  }
+```
+
+**[Terraform Data](https://developer.hashicorp.com/terraform/language/resources/terraform-data)**
