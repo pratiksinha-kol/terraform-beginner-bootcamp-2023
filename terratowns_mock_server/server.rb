@@ -122,7 +122,7 @@ class TerraTownsMockServer < Sinatra::Base
     # a begin/resurce is a try/catch, if an error occurs, result it.
     begin
       # Sinatra does not automatically part json bodys as params
-      # like rails so we need to manuall parse it.
+      # like rails so we need to manually parse it.
       payload = JSON.parse(request.body.read)
     rescue JSON::ParserError
       halt 422, "Malformed JSON"
