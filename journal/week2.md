@@ -38,3 +38,10 @@ bundle install
 bundle exec ruby server.rb
 ```
 All the code required for our server is present in the `server.rb` [file](../terratowns_mock_server/server.rb).  
+
+## CRUD 
+
+[Source 1 Wikipedia](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
+[Source 2](https://www.sumologic.com/glossary/crud/#:~:text=CRUD%20is%20an%20acronym%20that,%2C%20read%2C%20update%20and%20delete.)
+[Source 3](https://www.codecademy.com/article/what-is-crud)
+
