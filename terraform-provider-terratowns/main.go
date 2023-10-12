@@ -183,7 +183,6 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 	d.SetId(homeUUID)
 
 	log.Print("resourceHouseCreate:end")
-
 	return diags
 }
 
@@ -233,7 +232,6 @@ func resourceHouseRead(ctx context.Context, d *schema.ResourceData, m interface{
 	}
 
 	log.Print("resourceHouseRead:end")
-
 	return diags
 }
 
@@ -324,6 +322,5 @@ func resourceHouseDelete(ctx context.Context, d *schema.ResourceData, m interfac
 	d.SetId("")
 
 	log.Print("resourceHouseDelete:end")
-
 	return diags
 }
