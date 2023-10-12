@@ -17,7 +17,7 @@ terraform {
 
 provider "terratowns" {
   endpoint = "http://localhost:4567/api"
-  user_uuid="e328f4ab-b99f-421c-84c9-4ccea042c7d1" 
+  user_uuid="80e72f0a-55c9-4534-a5e2-de1bd3e98189" 
   token="9b49b3fb-b8e9-483c-b703-97ba88eef8e0" 
 }
 
