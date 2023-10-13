@@ -29,13 +29,13 @@ resource "aws_s3_bucket_website_configuration" "website_configuration" {
 resource "aws_s3_object" "index" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
-  source = "${path.root}/public/index.html"
+  source = "${var.public_path}/index.html"
   content_type = "text/html"
 
   # The filemd5() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
   # etag = "${md5(file("path/to/file"))}"
-  etag = filemd5(var.index_html_filepath)
+  etag = filemd5("${var.public_path}/index.html")
   lifecycle {
     replace_triggered_by = [ terraform_data.content_version.output ]
     ignore_changes = [ etag ]
@@ -45,13 +45,13 @@ resource "aws_s3_object" "index" {
 resource "aws_s3_object" "error" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "error.html"
-  source = "${path.root}/public/error.html"
+  source = "${var.public_path}/error.html"
   content_type = "text/html"
 
   # The filemd5() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
   # etag = "${md5(file("path/to/file"))}"
-  etag = filemd5(var.error_html_filepath)
+  etag = filemd5("${var.public_path}/error.html")
   lifecycle {
     replace_triggered_by = [ terraform_data.content_version.output ]
     ignore_changes = [ etag ]
@@ -90,13 +90,14 @@ resource "terraform_data" "content_version" {
 # fileset("${path.root}/public/assets", "*.{jpg,png,gif}")
 # fileset("${path.root}/public/assets", "*")
 resource "aws_s3_object" "upload_assets" {
-  for_each = fileset(var.assets_path, "*.{jpg,png,gif}")
+  # for_each = fileset(var.public_path, "*.{jpg,png,gif}")
+  for_each = fileset("${var.public_path}/assets","*.{jpg,png,gif}")
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "assets/${each.key}"
-  source = "${var.assets_path}/${each.key}"
+  source = "${var.public_path}/assets/${each.key}"
   # content_type = "text/html"
 
-  etag = filemd5("${var.assets_path}/${each.key}")
+  etag = filemd5("${var.public_path}/assets/${each.key}")
   lifecycle {
     replace_triggered_by = [ terraform_data.content_version.output ]
     ignore_changes = [ etag ]
