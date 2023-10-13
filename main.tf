@@ -61,7 +61,7 @@ This is one of my favorite games as a youngster.
 DESCRIPTION
   domain_name = module.home_maxpayne_hosting.domain_name
   # domain_name = "3psh3gz.cloudfront.net"
-  # town = "gamers-grotto"
-  town = "missingo"
+  town = "gamers-grotto"
+  # town = "missingo"
   content_version = var.maxpayne.content_version
 }
