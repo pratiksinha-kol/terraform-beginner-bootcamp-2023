@@ -44,24 +44,24 @@ DESCRIPTION
 }
 
 
-# module "home_maxpayne_hosting" {
-#   source = "./modules/terrahome_aws"
-#   user_uuid = var.teacherseat_user_uuid
-#   public_path = var.maxpayne.public_path
-#   content_version = var.maxpayne.content_version
-# }
+module "home_maxpayne_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.maxpayne.public_path
+  content_version = var.maxpayne.content_version
+}
 
-# resource "terratowns_home" "home_maxpayne" {
-#   name = "Max Payne Video game"
-#   description = <<DESCRIPTION
-# Max Payne is a neo-noir third-person shooter video game series developed by Remedy Entertainment and Rockstar Studios. 
-# The series is named after its protagonist, Max Payne.
-# He is a New York City police detective turned vigilante after his family was murdered by drug addicts.
-# This is one of my favorite games as a youngster. 
-# DESCRIPTION
-#   domain_name = module.home_maxpayne_hosting.domain_name
-#   # domain_name = "3psh3gz.cloudfront.net"
-#   # town = "gamers-grotto"
-#   town = "missingo"
-#   content_version = var.maxpayne.content_version
-# }
+resource "terratowns_home" "home_maxpayne" {
+  name = "Max Payne Video game"
+  description = <<DESCRIPTION
+Max Payne is a neo-noir third-person shooter video game series developed by Remedy Entertainment and Rockstar Studios. 
+The series is named after its protagonist, Max Payne.
+He is a New York City police detective turned vigilante after his family was murdered by drug addicts.
+This is one of my favorite games as a youngster. 
+DESCRIPTION
+  domain_name = module.home_maxpayne_hosting.domain_name
+  # domain_name = "3psh3gz.cloudfront.net"
+  # town = "gamers-grotto"
+  town = "missingo"
+  content_version = var.maxpayne.content_version
+}

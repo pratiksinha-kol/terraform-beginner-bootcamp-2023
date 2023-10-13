@@ -4,7 +4,7 @@ arcanum = {
   public_path = "/workspace/terraform-beginner-bootcamp-2023/public/arcanum"
   content_version = 1
 }
-payday = {
+maxpayne = {
   public_path = "/workspace/terraform-beginner-bootcamp-2023/public/maxpayne"
   content_version = 1 
 }
